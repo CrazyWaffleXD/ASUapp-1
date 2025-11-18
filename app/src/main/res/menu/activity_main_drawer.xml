@@ -9,10 +9,7 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
-        <item
-            android:id="@+id/menu_help"
-            android:icon="@drawable/baseline_help_24"
-            android:title="@string/menu_help" />
+
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
@@ -22,15 +19,10 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_dailyPlanner" />
         <item
-            android:id="@+id/news"
-            android:icon="@drawable/baseline_news_24"
-            android:title="@string/news" />
-        <item
             android:id="@+id/menu_ad"
             android:icon="@drawable/baseline_assignment_late_24"
             app:actionViewClass="android.widget.TextView"
             android:title="@string/menu_ad" />
-
         <item
             android:id="@+id/menu_admin"
             android:icon="@drawable/baseline_admin_panel_settings_24"
@@ -43,10 +35,7 @@
             android:id="@+id/menu_creators"
             android:icon="@drawable/baseline_assist_walker_24"
             android:title="@string/menu_creators" />
-        <item
-            android:id="@+id/menu_settings"
-            android:icon="@drawable/baseline_settings_24"
-            android:title="@string/menu_settings" />
+
 
 
     </group>
