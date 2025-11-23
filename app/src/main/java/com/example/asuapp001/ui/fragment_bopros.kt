@@ -1,60 +1,87 @@
 package com.example.asuapp001.ui
 
+import android.animation.ValueAnimator
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.example.asuapp001.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [fragment_bopros.newInstance] factory method to
- * create an instance of this fragment.
- */
 class fragment_bopros : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bopros, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_bopros, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment fragment_bopros.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_bopros().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        val questionContainer = view.findViewById<View>(R.id.question_container)
+        val question = view.findViewById<TextView>(R.id.question1)
+        val answer = view.findViewById<TextView>(R.id.answer1)
+        val arrow = view.findViewById<ImageView>(R.id.arrow1)
+
+        // Устанавливаем высоту 0, если скрыто
+        answer.apply {
+            visibility = View.GONE
+            layoutParams.height = 0
+        }
+
+        questionContainer.setOnClickListener {
+            if (answer.visibility == View.GONE) {
+                // Сначала делаем видимым, чтобы можно было измерить
+                answer.visibility = View.VISIBLE
+
+                // Принудительно измеряем высоту с текущим текстом
+                answer.measure(
+                    View.MeasureSpec.makeMeasureSpec(view.measuredWidth, View.MeasureSpec.AT_MOST),
+                    View.MeasureSpec.UNSPECIFIED
+                )
+                val targetHeight = answer.measuredHeight
+
+                // Анимируем от 0 до измеренной высоты
+                val animator = ValueAnimator.ofInt(0, targetHeight)
+                animator.addUpdateListener { animation ->
+                    answer.layoutParams.height = animation.animatedValue as Int
+                    answer.requestLayout()
                 }
+                animator.duration = 300
+                animator.interpolator = DecelerateInterpolator()
+                animator.start()
+
+                // Повернуть стрелку вверх
+                arrow.animate().rotation(180f).setDuration(300).start()
+            } else {
+                // Анимируем скрытие
+                val currentHeight = answer.measuredHeight
+                val animator = ValueAnimator.ofInt(currentHeight, 0)
+                animator.addUpdateListener { animation ->
+                    answer.layoutParams.height = animation.animatedValue as Int
+                    answer.requestLayout()
+                }
+                animator.duration = 300
+                animator.interpolator = DecelerateInterpolator()
+                animator.start()
+
+                // Через время скроем view
+                animator.addListener(object : android.animation.Animator.AnimatorListener {
+                    override fun onAnimationStart(animation: android.animation.Animator) {}
+                    override fun onAnimationEnd(animation: android.animation.Animator) {
+                        answer.visibility = View.GONE
+                    }
+                    override fun onAnimationCancel(animation: android.animation.Animator) {}
+                    override fun onAnimationRepeat(animation: android.animation.Animator) {}
+                })
+
+                // Повернуть стрелку вниз
+                arrow.animate().rotation(0f).setDuration(300).start()
             }
+        }
+
+        return view
     }
 }
