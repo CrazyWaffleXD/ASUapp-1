@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#1a4d99</color>
-    <color name="purple_700">#1a4d99</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FFFFFF</color>
-    <color name="white">#000000</color>
+    <color name="purple_200">#BB86FC</color> <!-- Фиолетовый 200 -->
+    <color name="purple_500">#6200EE</color> <!-- Фиолетовый 500 -->
+    <color name="purple_700">#3700B3</color> <!-- Фиолетовый 700 -->
+    <color name="teal_200">#03DAC5</color> <!-- Бирюзовый 200 -->
+    <color name="teal_700">#018786</color> <!-- Бирюзовый 700 -->
+    <color name="black">#FF000000</color> <!-- Черный -->
+    <color name="white">#FFFFFFFF</color> <!-- Белый -->
+    <color name="primary">#9C27B0</color> <!-- Основной -->
+    <color name="accent">#1a4d99</color> <!-- Акцентный -->
+    <color name="new_yellow_1">#ffff00</color> <!-- Желтый -->
+    <color name="new_blue">#0000ff</color>     <!-- Синий -->
+    <color name="new_green">#00ff00</color>    <!-- Зеленый -->
+    <color name="new_light_grey">#dfe6e7</color> <!-- Светло-серый -->
+    <color name="new_red">#f91f2f</color>      <!-- Красный -->
+    <color name="new_pink">#f133ff</color>     <!-- Розовый -->
+    <color name="new_orange_yellow">#f1ae3b</color> <!-- Оранжево-желтый -->
+    <color name="new_brown_grey">#99886c</color> <!-- Серый (нейтральный оттенок) -->
 </resources>
