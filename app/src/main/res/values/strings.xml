@@ -9,11 +9,12 @@
 
     <string name="menu_home">Главная</string>
     <string name="menu_gallery">Расписание </string>
-    <string name="menu_dailyPlanner">Мои записки</string>
+    <string name="menu_dailyPlanner">Мои заметки</string>
     <string name="menu_creators">О разработчиках</string>
     <string name="menu_ad">Объявления</string>
     <string name="menu_admin">Панель Администратора</string>
-    <string name="menu_bopros">Часто задоваемые вопросы</string>
+    <string name="menu_bopros">Помощь</string>
+    <string name="menu_settings">Настройки</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
