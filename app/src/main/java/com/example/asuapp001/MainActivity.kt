@@ -1,15 +1,10 @@
 package com.example.asuapp001
 
-import android.content.ContentValues.TAG
-import android.content.Context
-import android.content.SharedPreferences
+
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.TextView
-import android.widget.Toast
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,15 +17,8 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
 import androidx.navigation.NavOptions
 import com.example.asuapp001.databinding.ActivityMainBinding
-import com.example.asuapp001.ui.ad.AdFragment
 import com.example.asuapp001.utils.FirebaseHelper
 import com.example.asuapp001.utils.SharedPreferencesHelper
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
 
