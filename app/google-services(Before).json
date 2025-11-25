@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "353117976718",
-    "project_id": "asuapp001",
-    "storage_bucket": "asuapp001.firebasestorage.app"
+    "project_number": "1039700356629",
+    "firebase_url": "https://asuapp-ba1c3-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "asuapp-ba1c3",
+    "storage_bucket": "asuapp-ba1c3.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:353117976718:android:571691c4a51f7dbecb71df",
+        "mobilesdk_app_id": "1:1039700356629:android:34d428604277a70cb2a81c",
         "android_client_info": {
           "package_name": "com.example.asuapp001"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBE4sZ-f7tzv1osgU1VbivepcFiM_NOqAw"
+          "current_key": "AIzaSyCKVoDErQDaRLtuwflJ4cbuYu9NN8vgBSk"
         }
       ],
       "services": {
