@@ -5,8 +5,8 @@
     <color name="purple_700">#1a4d99</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FFFFFF</color>
-    <color name="white">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="new_yellow_1">#ffff00</color> <!-- Желтый -->
     <color name="new_blue">#0000ff</color>     <!-- Синий -->
     <color name="new_green">#00ff00</color>    <!-- Зеленый -->
