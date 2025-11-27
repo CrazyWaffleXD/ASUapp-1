@@ -91,13 +91,16 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        // Инициализируем и запускаем FirebaseHelper
-        firebaseHelper = FirebaseHelper(prefs) { newValue ->
-            // Колбэк: когда Firebase прислал новое значение
-            MytextBar.text = "⁉️"
-            prefs.saveString("dataMainValueTTT", "⁉️")
+        // Инициализация FirebaseHelper
+        firebaseHelper = FirebaseHelper(prefs) {
+            // Колбэк: пришло новое объявление
+            runOnUiThread {
+                MytextBar.text = "⁉️"
+                prefs.saveString("dataMainValueTTT", "⁉️")
+            }
         }
-        firebaseHelper.startListening()  // Запуск прослушивания
+        firebaseHelper.startListening()
+        updateAdMenuItem()
     }
 
     // --- Меню в Toolbar ---
@@ -111,4 +114,12 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    private fun updateAdMenuItem() {
+        val savedText = prefs.getString("dataMainValueTTT", "") ?: ""
+        runOnUiThread {
+            MytextBar.text = savedText
+        }
+    }
+
 }

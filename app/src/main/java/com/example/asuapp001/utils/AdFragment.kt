@@ -1,4 +1,4 @@
-package com.example.asuapp001.ui.ad
+package com.example.asuapp001.utils
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.database.ktx.database
-import java.util.Locale
 
 class AdFragment : Fragment() {
 
@@ -50,12 +49,11 @@ class AdFragment : Fragment() {
                 val adsList = mutableListOf<Ad>()
 
                 for (adSnapshot in snapshot.children) {
-                    // Явно приводим к String, если значение существует
                     val title = adSnapshot.child("title").value as? String ?: "Без названия"
                     val description = adSnapshot.child("description").value as? String ?: "Нет описания"
                     val imageUrl = adSnapshot.child("imageUrl").value as? String ?: ""
 
-                    val imageRes = when (imageUrl.lowercase(Locale.getDefault())) {
+                    val imageRes = when (imageUrl.lowercase()) {
                         "l2025" -> R.drawable.l2025
                         "santa_hat" -> R.drawable.santa_hat
                         else -> R.drawable.logo
@@ -68,7 +66,7 @@ class AdFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Логировать при необходимости
+                // Логировать: error.toException()
             }
         })
     }

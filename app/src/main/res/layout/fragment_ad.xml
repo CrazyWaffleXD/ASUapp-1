@@ -5,7 +5,7 @@
     android:background="@drawable/fon"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ad.AdFragment" >
+    tools:context=".ui.ad.AdFragment">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -24,35 +24,25 @@
         android:fontFamily="@font/fonts"
         android:text="Объявления"
         android:textColor="#1a4d99"
-        android:textSize="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintVertical_bias="0.124" />
 
-    <TextView
-        android:id="@+id/TextFromDB"
-        android:layout_width="278dp"
-        android:layout_height="209dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/shape"
-        android:fontFamily="@font/fonts"
-        android:paddingLeft="15dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="10dp"
-        android:paddingRight="10dp"
-        android:text="Пусто"
-        android:textAlignment="textStart"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAds"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:listitem="@layout/item_ad_card" />
 
     <ImageView
         android:id="@+id/imageView8"
@@ -62,8 +52,8 @@
         android:layout_marginBottom="-30dp"
         android:rotation="45"
         android:src="@drawable/santa_hat"
-        app:layout_constraintBottom_toTopOf="@+id/TextFromDB"
-        app:layout_constraintStart_toEndOf="@+id/TextFromDB" />
+        app:layout_constraintBottom_toTopOf="@+id/recyclerViewAds"
+        app:layout_constraintStart_toEndOf="@+id/recyclerViewAds" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -82,16 +72,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageFromBD"
-        android:layout_width="277dp"
-        android:layout_height="216dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextFromDB"
-        app:layout_constraintVertical_bias="0.214"
-        tools:src="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>
-

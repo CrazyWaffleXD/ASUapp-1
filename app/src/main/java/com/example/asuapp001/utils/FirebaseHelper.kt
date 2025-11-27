@@ -9,30 +9,29 @@ import com.google.firebase.ktx.Firebase
 
 class FirebaseHelper(
     private val prefs: SharedPreferencesHelper,
-    private val onDataUpdated: (String) -> Unit
+    private val onDataUpdated: () -> Unit  // Меняем: просто вызов, без аргументов
 ) {
     private val database = Firebase.database
-    private val myRef = database.getReference("message")
-    private var currentValue: String = ""
+    private val adsRef = database.getReference("ads")  // Слушаем узел "ads"
+    private var lastKnownCount = 0
 
     fun startListening() {
-        // Загружаем последнее сохранённое значение
-        currentValue = prefs.getString("dataMainValue", "ds") ?: "ds"
+        // Загружаем последний известный счётчик
+        lastKnownCount = prefs.getInt("ads_last_count", 0)
 
-        myRef.addValueEventListener(object : ValueEventListener {
+        adsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                // Явно получаем значение как String
-                val value = snapshot.getValue(String::class.java)
+                val currentCount = snapshot.childrenCount.toInt()
 
-                if (value != null && value != currentValue) {
-                    currentValue = value
-                    prefs.saveString("dataMainValue", value)
-                    onDataUpdated(value) // Уведомляем MainActivity
+                // Если новых объявлений больше — показываем уведомление
+                if (currentCount > lastKnownCount) {
+                    prefs.saveInt("ads_last_count", currentCount)
+                    onDataUpdated() // Уведомляем MainActivity
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.w("FirebaseHelper", "Firebase database error: ${error.message}")
+                Log.w("FirebaseHelper", "Ошибка: ${error.message}")
             }
         })
     }
