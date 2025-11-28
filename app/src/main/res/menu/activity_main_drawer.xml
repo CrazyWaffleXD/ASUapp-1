@@ -32,6 +32,10 @@
             android:icon="@drawable/baseline_search_24"
             android:title="@string/menu_bopros" />
         <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_setting"
+            android:title="@string/menu_setting"/>
+        <item
             android:id="@+id/menu_creators"
             android:icon="@drawable/baseline_assist_walker_24"
             android:title="@string/menu_creators" />
