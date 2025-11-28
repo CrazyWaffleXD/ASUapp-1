@@ -1,15 +1,16 @@
 package com.example.asuapp001.ui
 
-import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.DecelerateInterpolator
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.LinearLayout
+import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import com.example.asuapp001.R
+import com.example.asuapp001.utils.Question.ExpandableQuestion
+import com.example.asuapp001.utils.Question.SectionManager
+import com.example.asuapp001.utils.Question.QuestionManager
 
 class fragment_bopros : Fragment() {
 
@@ -20,66 +21,57 @@ class fragment_bopros : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_bopros, container, false)
 
-        val questionContainer = view.findViewById<View>(R.id.question_container)
-        val question = view.findViewById<TextView>(R.id.question1)
-        val answer = view.findViewById<TextView>(R.id.answer1)
-        val arrow = view.findViewById<ImageView>(R.id.arrow1)
+        val scrollView = view.findViewById<ScrollView>(R.id.scrollView)
 
-        // Устанавливаем высоту 0, если скрыто
-        answer.apply {
-            visibility = View.GONE
-            layoutParams.height = 0
+        val sectionsContainer = view.findViewById<LinearLayout>(R.id.sections_container)
+        val sectionManager = SectionManager(sectionsContainer)
+
+        // === Раздел: Поступление ===
+        val admissionContainer = sectionManager.createSection("Поступление")
+        QuestionManager(admissionContainer).apply {
+            addQuestion(
+                "Как поступить в АлтГУ?",
+                "Для поступления необходимо подать документы через приёмную комиссию, сдать ЕГЭ или внутренние экзамены, и подать заявление до 20 августа."
+            )
+            addQuestion(
+                "Нужны ли оригиналы документов?",
+                "Да, оригиналы необходимо предоставить после подачи копий для подтверждения."
+            )
         }
 
-        questionContainer.setOnClickListener {
-            if (answer.visibility == View.GONE) {
-                // Сначала делаем видимым, чтобы можно было измерить
-                answer.visibility = View.VISIBLE
+        // === Раздел: Общежитие ===
+        val hostelContainer = sectionManager.createSection("Общежитие")
+        QuestionManager(hostelContainer).apply {
+            addQuestion(
+                "Есть ли общежитие для иногородних?",
+                "Да, АлтГУ предоставляет общежитие для иногородних студентов. Необходимо подать заявление в отдел обеспечения жильём."
+            )
+            addQuestion(
+                "Сколько стоит проживание?",
+                "Проживание в общежитии бесплатное для студентов, обучающихся на бюджетной основе."
+            )
+        }
 
-                // Принудительно измеряем высоту с текущим текстом
-                answer.measure(
-                    View.MeasureSpec.makeMeasureSpec(view.measuredWidth, View.MeasureSpec.AT_MOST),
-                    View.MeasureSpec.UNSPECIFIED
-                )
-                val targetHeight = answer.measuredHeight
+        // === Раздел: Расписание ===
+        val scheduleContainer = sectionManager.createSection("Расписание")
+        QuestionManager(scheduleContainer).apply {
+            addQuestion(
+                "Где найти расписание занятий?",
+                "Расписание доступно на официальном сайте университета в разделе \"Студенту\" → \"Расписание\"."
+            )
+            addQuestion(
+                "Можно ли получать расписание в Telegram?",
+                "Да, бот АлтГУ присылает актуальное расписание по запросу."
+            )
+        }
 
-                // Анимируем от 0 до измеренной высоты
-                val animator = ValueAnimator.ofInt(0, targetHeight)
-                animator.addUpdateListener { animation ->
-                    answer.layoutParams.height = animation.animatedValue as Int
-                    answer.requestLayout()
-                }
-                animator.duration = 300
-                animator.interpolator = DecelerateInterpolator()
-                animator.start()
-
-                // Повернуть стрелку вверх
-                arrow.animate().rotation(180f).setDuration(300).start()
-            } else {
-                // Анимируем скрытие
-                val currentHeight = answer.measuredHeight
-                val animator = ValueAnimator.ofInt(currentHeight, 0)
-                animator.addUpdateListener { animation ->
-                    answer.layoutParams.height = animation.animatedValue as Int
-                    answer.requestLayout()
-                }
-                animator.duration = 300
-                animator.interpolator = DecelerateInterpolator()
-                animator.start()
-
-                // Через время скроем view
-                animator.addListener(object : android.animation.Animator.AnimatorListener {
-                    override fun onAnimationStart(animation: android.animation.Animator) {}
-                    override fun onAnimationEnd(animation: android.animation.Animator) {
-                        answer.visibility = View.GONE
-                    }
-                    override fun onAnimationCancel(animation: android.animation.Animator) {}
-                    override fun onAnimationRepeat(animation: android.animation.Animator) {}
-                })
-
-                // Повернуть стрелку вниз
-                arrow.animate().rotation(0f).setDuration(300).start()
-            }
+        // === Раздел: Аркадий ===
+        val ArkadyContainer = sectionManager.createSection("Важный вопрос")
+        QuestionManager(ArkadyContainer).apply {
+            addQuestion(
+                "Аркадий жмурик?",
+                "Да."
+            )
         }
 
         return view
