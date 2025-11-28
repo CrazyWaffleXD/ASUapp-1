@@ -20,6 +20,7 @@ class DeveloperAdapter(private val developers: List<Developer>) :
         val nameTextView: TextView = itemView.findViewById(R.id.nameTextView)
         val roleTextView: TextView = itemView.findViewById(R.id.roleTextView)
         val groupTextView: TextView = itemView.findViewById(R.id.groupTextView)
+        val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
         val githubIcon: ImageView = itemView.findViewById(R.id.githubIcon)
         val githubText: TextView = itemView.findViewById(R.id.githubText)
         val emailIcon: ImageView = itemView.findViewById(R.id.emailIcon)
@@ -39,6 +40,7 @@ class DeveloperAdapter(private val developers: List<Developer>) :
         holder.nameTextView.text = developer.name
         holder.roleTextView.text = developer.role
         holder.groupTextView.text = "Группа: ${developer.group}"
+        holder.descriptionTextView.text = developer.descriptionText
 
         // Обработчики кликов
         holder.githubText.setOnClickListener {
