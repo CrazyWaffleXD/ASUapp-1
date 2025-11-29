@@ -92,10 +92,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Прилагуша — это мобильное приложение для студентов Алтайского государственного университета, филиал в г. Бийск. Приложение разработано студентами групп 305с9-1 и 405с11-1 с целью упростить доступ к расписанию, объявлениям и другой важной информации."
+                    android:text="@string/about_app_description"
                     android:textSize="16sp"
                     android:textColor="#555555"
-                    android:lineSpacingExtra="4dp"/>
+                    android:lineSpacingExtra="2dp"
+                    android:hyphenationFrequency="none"
+                    android:includeFontPadding="false"
+                    android:breakStrategy="simple"
+                    android:justificationMode="inter_word"
+                    android:layout_marginTop="8dp" />
 
             </LinearLayout>
 
