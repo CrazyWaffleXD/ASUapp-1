@@ -1,127 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
-    tools:context=".fragment_creators">
+    android:fillViewport="true">
 
-    <!-- Заголовок -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/headerCard"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="24dp"
-        app:cardBackgroundColor="#8f1b8b"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:background="#F5F5F5"
+        tools:context=".fragment_creators">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <!-- Заголовок -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/headerCard"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp"
-            android:gravity="center">
+            android:layout_margin="16dp"
+            app:cardCornerRadius="24dp"
+            app:cardBackgroundColor="#8f1b8b"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_code"
-                android:layout_marginBottom="12dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="О разработчиках"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Приложение создано студентами АлтГУ"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:alpha="0.9"/>
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <!-- О проекте -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/projectCard"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/headerCard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="❤️ О проекте"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#1a4d99"
-                android:layout_marginBottom="12dp"/>
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Прилагуша — это мобильное приложение для студентов Алтайского государственного университета, филиал в г. Бийск. Приложение разработано студентами групп 305с9-1 и 405с11-1 с целью упростить доступ к расписанию, объявлениям и другой важной информации."
-                android:textSize="16sp"
-                android:textColor="#555555"
-                android:lineSpacingExtra="4dp"/>
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_code"
+                    android:layout_marginBottom="12dp"/>
 
-    </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="О разработчиках"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp"/>
 
-    <!-- Заголовок команды -->
-    <TextView
-        android:id="@+id/teamTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="20dp"
-        android:text="Команда разработки"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="#333333"
-        app:layout_constraintTop_toBottomOf="@id/projectCard"
-        app:layout_constraintStart_toStartOf="parent"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Приложение создано студентами АлтГУ"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:alpha="0.9"/>
 
-    <!-- RecyclerView для списка разработчиков -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewDevelopers"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintTop_toBottomOf="@id/teamTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- О проекте -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/projectCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/headerCard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="❤️ О проекте"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1a4d99"
+                    android:layout_marginBottom="12dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Прилагуша — это мобильное приложение для студентов Алтайского государственного университета, филиал в г. Бийск. Приложение разработано студентами групп 305с9-1 и 405с11-1 с целью упростить доступ к расписанию, объявлениям и другой важной информации."
+                    android:textSize="16sp"
+                    android:textColor="#555555"
+                    android:lineSpacingExtra="4dp"/>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Заголовок команды -->
+        <TextView
+            android:id="@+id/teamTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:text="Команда разработки"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            app:layout_constraintTop_toBottomOf="@id/projectCard"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!-- RecyclerView для списка разработчиков -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewDevelopers"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintTop_toBottomOf="@id/teamTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:nestedScrollingEnabled="false" /> <!-- Отключаем внутреннюю прокрутку -->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

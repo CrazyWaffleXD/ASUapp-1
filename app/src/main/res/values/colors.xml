@@ -15,4 +15,5 @@
     <color name="new_pink">#f133ff</color>     <!-- Розовый -->
     <color name="new_orange_yellow">#f1ae3b</color> <!-- Оранжево-желтый -->
     <color name="new_brown_grey">#99886c</color> <!-- Серый (нейтральный оттенок) -->
+    <color name="chip_background">#E0E0E0</color>
 </resources>

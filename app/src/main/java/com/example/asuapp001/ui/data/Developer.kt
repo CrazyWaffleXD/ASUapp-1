@@ -4,6 +4,7 @@ data class Developer(
     val name: String,
     val role: String,
     val group: String,
+    val descriptionText: String,
     val githubUrl: String,
     val email: String,
     val avatarResId: Int

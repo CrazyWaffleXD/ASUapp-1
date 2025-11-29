@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.ad.AdFragment">
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="290dp"
@@ -17,59 +16,79 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/TextTitle"
-        android:layout_width="277dp"
-        android:layout_height="53dp"
-        android:fontFamily="@font/fonts"
-        android:text="Объявления"
-        android:textColor="#1a4d99"
-        android:textSize="40sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintVertical_bias="0.124" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAds"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TextTitle"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_ad_card" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="65dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="-40dp"
-        android:layout_marginBottom="-30dp"
-        android:rotation="45"
-        android:src="@drawable/santa_hat"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewAds"
-        app:layout_constraintStart_toEndOf="@+id/recyclerViewAds" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="139dp"
-        android:layout_height="112dp"
-        android:layout_marginEnd="30dp"
-        android:src="@drawable/l2025"
+    <TextView
+        android:id="@+id/TextTitle"
+        android:layout_width="330dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/fonts"
+        android:text="@string/menu_ad"
+        android:textColor="#000000"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="370dp"
-        android:layout_height="740dp"
-        android:src="@drawable/garlands"
+        app:layout_constraintHorizontal_bias="0.634"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroupFilters"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TextTitle"
+        app:selectionRequired="false"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAll"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Все" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipNews"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Новости" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipEvents"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="События" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAnnounce"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Объявления" />
+
+    </com.google.android.material.chip.ChipGroup>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

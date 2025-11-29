@@ -60,7 +60,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.menu_creators,
                 R.id.menu_ad,
                 R.id.menu_admin,
-                R.id.menu_bopros
+                R.id.menu_bopros,
+                R.id.nav_settings
             ),
             drawerLayout
         )

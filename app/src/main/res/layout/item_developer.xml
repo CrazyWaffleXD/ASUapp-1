@@ -50,6 +50,15 @@
                 android:textColor="#666666"
                 android:layout_marginTop="4dp"/>
 
+
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#777777"
+                android:layout_marginTop="4dp"/>
+
             <TextView
                 android:id="@+id/groupTextView"
                 android:layout_width="wrap_content"
@@ -82,7 +91,7 @@
                         android:src="@drawable/ic_github"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="4dp"
-                        android:tint="#1a4d99"/>
+                        app:tint="#1a4d99"/>
 
                     <TextView
                         android:id="@+id/githubText"
@@ -110,7 +119,7 @@
                         android:src="@drawable/ic_email"
                         android:layout_gravity="center_vertical"
                         android:layout_marginEnd="4dp"
-                        android:tint="#1a4d99"/>
+                        app:tint="#1a4d99"/>
 
                     <TextView
                         android:id="@+id/emailText"
