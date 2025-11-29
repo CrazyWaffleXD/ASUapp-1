@@ -2,7 +2,7 @@ package com.example.asuapp001.utils.Question
 
 import android.widget.LinearLayout
 
-class QuestionManager(private val container: LinearLayout) {  // ← Теперь принимает LinearLayout
+class QuestionManager(private val container: LinearLayout) {
 
     fun addQuestion(questionText: String, answerText: String) {
         ExpandableQuestion(container, questionText, answerText).create()
