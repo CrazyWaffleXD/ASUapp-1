@@ -29,67 +29,67 @@ class fragment_creators : Fragment() {
         // Пример данных
         val developers = listOf(
             Developer(
-                name = "Алексей",
-                role = "Android-разработчик",
-                group = "305с9-1",
-                descriptionText = "Описания нет",
+                name = "Земцов Алексей Владимирович",
+                role = "Руководитель проекта",
+                group = "Преподаватель СПО",
+                descriptionText = "Наш слон",
                 avatarResId = R.drawable.ic_avatar_default,
                 githubUrl = "https://github.com/alexey",
                 email = "alexey@asu.ru"
             ),
             Developer(
-                name = "Марина",
-                role = "UI/UX Дизайнер",
-                group = "405с11-1",
+                name = "Затеев Николай Максимович",
+                role = "Разработчик, дизайнер",
+                group = "305с9-1",
                 descriptionText = "Описания нет",
                 avatarResId = R.drawable.ic_avatar_default,
-                githubUrl = "https://github.com/marina",
-                email = "marina@asu.ru"
+                githubUrl = "",
+                email = "nikolay.zateev@yandex.ru"
             ),
             Developer(
-                name = "имя",
-                role = "Роль",
-                group = "группа",
-                descriptionText = "Описания нет",
+                name = "Панин Александр Николаевич",
+                role = "Лидер проекта, разработчик",
+                group = "305с9-1",
+                descriptionText = "",
                 avatarResId = R.drawable.ic_avatar_default,
-                githubUrl = "https://github.com/marina",
-                email = "marina@asu.ru"
+                githubUrl = "",
+                email = "sasha.pannin@yandex.ru"
             ),
             Developer(
-                name = "имя",
-                role = "Роль",
-                group = "группа",
+                name = "Швецов Аркадий Александрович",
+                role = "Разработчик, тестировщик",
+                group = "305с9-2",
                 descriptionText = "Описания нет",
                 avatarResId = R.drawable.ic_avatar_default,
-                githubUrl = "https://github.com/marina",
-                email = "marina@asu.ru"
+                githubUrl = "",
+                email = "arkadiy.shevtsow@yandex.ru"
             ),
             Developer(
-                name = "имя",
-                role = "Роль",
-                group = "группа",
+                name = "Хуторной Михаил Николаевич",
+                role = "Разработчик",
+                group = "305с9-1",
                 descriptionText = "Описания нет",
                 avatarResId = R.drawable.ic_avatar_default,
-                githubUrl = "https://github.com/marina",
-                email = "marina@asu.ru"
+                githubUrl = "",
+                email = "mikhail.khutornoy@yandex.ru"
             ),
             Developer(
-                name = "имя",
-                role = "Роль",
-                group = "группа",
+                name = "Черданцев Иван",
+                role = "Разработчик",
+                group = "305с9-1",
                 descriptionText = "Описания нет",
                 avatarResId = R.drawable.ic_avatar_default,
-                githubUrl = "https://github.com/marina",
-                email = "marina@asu.ru"
+                githubUrl = "",
+                email = "ivan.cherdantsev@yandex.ru"
             ),
             Developer(
-                name = "имя",
-                role = "Роль",
-                group = "группа",
+                name = "Шабанов Никита",
+                role = "Разработчик, дизайнер",
+                group = "405с11-с",
                 descriptionText = "Описания нет",
                 avatarResId = R.drawable.ic_avatar_default,
-                githubUrl = "https://github.com/marina",
-                email = "marina@asu.ru"
+                githubUrl = "",
+                email = "nikita.shabanov@yandex.ru"
             )
         )
 
