@@ -1,9 +1,11 @@
 package com.example.asuapp001.ui
 
+import android.animation.*
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -11,6 +13,7 @@ import com.example.asuapp001.R
 import com.example.asuapp001.utils.Question.ExpandableQuestion.Category
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import kotlin.text.get
 
 class fragment_bopros : Fragment() {
 
@@ -18,7 +21,7 @@ class fragment_bopros : Fragment() {
     private val sectionHeaders = mutableListOf<TextView>()
     private val sectionContainers = mutableListOf<LinearLayout>()
 
-    private var currentCategory: Category = Category.ALL  // Сохраняем текущую категорию
+    private var currentCategory: Category = Category.ALL
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,17 +35,15 @@ class fragment_bopros : Fragment() {
 
         createAllQuestions()
 
-        // Настраиваем чипы с кликами
         setupChipClickListeners(chipGroup)
 
-        // Изначально показываем "Все"
+        // Показываем все при старте
         filterSections(currentCategory)
 
         return view
     }
 
     private fun setupChipClickListeners(chipGroup: ChipGroup) {
-        // Находим все чипы по ID
         val chips = listOf(
             chipGroup.findViewById<Chip>(R.id.btn_all),
             chipGroup.findViewById<Chip>(R.id.btn_app),
@@ -60,11 +61,9 @@ class fragment_bopros : Fragment() {
                     else -> Category.ALL
                 }
 
-                // Всегда сбрасываем и устанавливаем выбранный
                 chipGroup.clearCheck()
-                chip.isChecked = true  // Визуально подсвечиваем
+                chip.isChecked = true
 
-                // Применяем фильтр
                 if (newCategory != currentCategory) {
                     currentCategory = newCategory
                 }
@@ -74,7 +73,7 @@ class fragment_bopros : Fragment() {
     }
 
     private fun createAllQuestions() {
-        addSection("Помощь по приложению", Category.SITE) {
+        addSection("Помощь по приложению", Category.APP) {
             addQuestion(
                 it,
                 "Как подать заявление на поступление?",
@@ -83,7 +82,8 @@ class fragment_bopros : Fragment() {
             addQuestion(
                 it,
                 "Нужны ли оригиналы документов?",
-                "Да, для подтверждения.")
+                "Да, для подтверждения."
+            )
         }
 
         addSection("Общежитие", Category.APP) {
@@ -140,12 +140,93 @@ class fragment_bopros : Fragment() {
     }
 
     private fun filterSections(category: Category) {
+        val toHide = mutableListOf<Pair<TextView, LinearLayout>>()
+        val toShow = mutableListOf<Pair<TextView, LinearLayout>>()
+
         sectionHeaders.forEachIndexed { index, header ->
+            val container = sectionContainers[index]
             val sectionCategory = header.tag as? Category ?: Category.ALL
             val isVisible = category == Category.ALL || category == sectionCategory
 
-            sectionContainers[index].visibility = if (isVisible) View.VISIBLE else View.GONE
-            header.visibility = if (isVisible) View.VISIBLE else View.GONE
+            if (isVisible && container.visibility == View.GONE) {
+                toShow.add(header to container)
+            } else if (!isVisible && container.visibility == View.VISIBLE) {
+                toHide.add(header to container)
+            }
         }
+
+        // Сначала скрываем
+        if (toHide.isEmpty()) {
+            // Если нечего скрывать — сразу показываем
+            toShow.forEach { (h, c) -> animateExpand(c, h) }
+        } else {
+            // Храним счётчик завершённых анимаций
+            var completed = 0
+            toHide.forEach { (header, container) ->
+                animateCollapse(container, header) {
+                    completed++
+                    if (completed == toHide.size) {
+                        // После всех исчезновений — показываем нужные
+                        toShow.forEach { (h, c) -> animateExpand(c, h) }
+                    }
+                }
+            }
+        }
+    }
+    private fun animateExpand(container: LinearLayout, header: TextView) {
+        header.apply {
+            alpha = 0f
+            visibility = View.VISIBLE
+        }
+        container.apply {
+            alpha = 0f
+            visibility = View.VISIBLE
+        }
+
+        // Анимация появления
+        val headerAnimator = ObjectAnimator.ofFloat(header, "alpha", 1f)
+        val containerAnimator = ObjectAnimator.ofFloat(container, "alpha", 1f)
+
+        AnimatorSet().apply {
+            playTogether(headerAnimator, containerAnimator)
+            duration = 300
+            interpolator = DecelerateInterpolator()
+            start()
+        }
+    }
+
+    private fun animateCollapse(container: LinearLayout, header: TextView, onEnd: () -> Unit) {
+        val headerAnimator = ObjectAnimator.ofFloat(header, "alpha", 0f)
+        val containerAnimator = ObjectAnimator.ofFloat(container, "alpha", 0f)
+
+        AnimatorSet().apply {
+            playTogether(headerAnimator, containerAnimator)
+            duration = 300
+            interpolator = DecelerateInterpolator()
+            start()
+
+            addListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    header.visibility = View.GONE
+                    container.visibility = View.GONE
+                    header.alpha = 1f
+                    container.alpha = 1f
+                    onEnd() // Вызываем после анимации
+                }
+            })
+        }
+    }
+
+    private fun getContainerHeight(container: LinearLayout): Int {
+        var totalHeight = 0
+        for (i in 0 until container.childCount) {
+            val child = container.getChildAt(i)
+            child.measure(
+                View.MeasureSpec.makeMeasureSpec(container.measuredWidth, View.MeasureSpec.AT_MOST),
+                View.MeasureSpec.UNSPECIFIED
+            )
+            totalHeight += child.measuredHeight
+        }
+        return totalHeight
     }
 }
