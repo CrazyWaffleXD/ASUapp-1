@@ -16,6 +16,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/TextTitle"
+        android:layout_width="330dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/fonts"
+        android:text="@string/menu_ad"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.634"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAds"
@@ -31,21 +45,6 @@
         app:layout_constraintTop_toBottomOf="@+id/TextTitle"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_ad_card" />
-
-    <TextView
-        android:id="@+id/TextTitle"
-        android:layout_width="330dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/fonts"
-        android:text="@string/menu_ad"
-        android:textColor="#000000"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.634"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroupFilters"
@@ -87,6 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Объявления" />
+
+
 
     </com.google.android.material.chip.ChipGroup>
 
