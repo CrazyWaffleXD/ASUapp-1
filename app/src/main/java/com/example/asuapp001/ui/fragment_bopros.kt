@@ -76,31 +76,97 @@ class fragment_bopros : Fragment() {
         addSection("Помощь по приложению", Category.APP) {
             addQuestion(
                 it,
-                "Как подать заявление на поступление?",
-                "Лично в приёмную. Или на сайте АлтГУ. <a href='https://lk.abiturient.asu.ru/user/sign-in/login'>Подать заявление онлайн</a>"
+                "Где посмотреть расписание?",
+                "Расписание доступно в разделе \"Расписание\" или на сайте <a href='https://rasp.asu.ru'>rasp.asu.ru</a>."
             )
             addQuestion(
                 it,
-                "Нужны ли оригиналы документов?",
-                "Да, для подтверждения."
+                "Не приходит уведомление",
+                "Проверьте настройки уведомлений в приложении и на телефоне. Разрешите все типы уведомлений для этого приложения."
             )
         }
 
-        addSection("Общежитие", Category.APP) {
-            addQuestion(it, "Есть ли общежитие для иногородних?", "Да, подайте заявление.")
-            addQuestion(it, "Сколько стоит проживание?", "Бесплатно для бюджетников.")
-        }
-
-        addSection("Сайт", Category.SITE) {
-            addQuestion(it, "Где найти расписание?", "На сайте в разделе \"Студенту\".")
+        addSection("Помощь по сайту", Category.SITE) {
+            addQuestion(
+                it,
+                "Как подать заявление на поступление?",
+                "Заявления принимаются через <a href='https://pk.asu.ru'>Приёмную комиссию АСУ</a> в электронном виде."
+            )
+            addQuestion(
+                it,
+                "Как зарегистрироваться?",
+                "Зарегистрироваться можно через личный кабинет студента на сайте <a href='https://lk.asu.ru'>ЛК АСУ</a>."
+            )
+            addQuestion(
+                it,
+                "Как сменить пароль?",
+                "Смена пароля осуществляется в личном кабинете на сайте <a href='https://lk.asu.ru'>ЛК АСУ</a>."
+            )
+            addQuestion(
+                it,
+                "Где найти список преподавателей?",
+                "На сайте в разделе <a href='https://www.asu.ru/sveden/employees/'>Сведения об образовательной организации → Руководство и педагогический состав</a>."
+            )
         }
 
         addSection("Документы", Category.DOCUMENTS) {
-            addQuestion(it, "Какие документы нужны?", "Паспорт, аттестат, СНИЛС.")
+            addQuestion(
+                it,
+                "Какие документы нужны абитуриенту?",
+                "Паспорт, аттестат с приложением, СНИЛС, ИНН, фото 3×4, медицинская справка (по необходимости)."
+            )
+            addQuestion(
+                it,
+                "Можно ли заказать справку онлайн?",
+                "Да, через раздел \"Документы\" в приложении или на сайте <a href='https://www.asu.ru/univer_about/uslugi/'>Услуги АлтГУ</a>."
+            )
         }
 
-        addSection("Важный вопрос", Category.ALL) {
-            addQuestion(it, "Аркадий жмурик?", "Да.")
+        addSection("Обратная связь", Category.APP) {
+            addQuestion(
+                it,
+                "Техническая поддержка",
+                "Пишите на email: <a href='mailto:support@asu.ru'>support@asu.ru</a>"
+            )
+            addQuestion(
+                it,
+                "Telegram-бот",
+                "Наш бот поможет: <a href='https://t.me/ASU_SupportBot'>@ASU_SupportBot</a>"
+            )
+        }
+
+        addSection("Образовательные ресурсы и сообщества", Category.SITE) {
+            addQuestion(it, "Официальный сайт", "<a href='https://www.asu.ru'>www.asu.ru</a>")
+            addQuestion(it, "Личный кабинет", "<a href='https://lk.asu.ru'>lk.asu.ru</a>")
+            addQuestion(
+                it,
+                "Telegram-бот",
+                "<a href='https://t.me/ASU_SupportBot'>@ASU_SupportBot</a>"
+            )
+            addQuestion(
+                it,
+                "Сообщества",
+                        "            <a href=\"https://max.ru/id2225004738_biz\">Max</a><br>" +
+                        "            <a href=\"https://vk.com/public127455995\">ВКонтакте</a><br>" +
+                        "            <a href=\"https://ok.ru/group/64178468815086\">Одноклассники</a><br>" +
+                        "            <a href=\"https://youtube.com/c/AsuRuUniversity/\">YouTube</a><br>" +
+                        "            <a href=\"https://zen.yandex.ru/id/5e72e617b894223da526fae6\">Яндекс Дзен</a><br>" +
+                        "            <a href=\"https://rutube.ru/channel/23478960/\">Rutube</a><br>" +
+                        "            <a href=\"https://t.me/asuinfo\">Telegram</a><br>"
+            )
+        }
+
+        addSection("О приложении", Category.ALL) {
+            addQuestion(
+                it,
+                "Версия приложения",
+                "v1.0.0 (2025)"
+            )
+            addQuestion(
+                it,
+                "Политика конфиденциальности",
+                "<a href='https://www.asu.ru/privacy'>Ознакомьтесь с политикой обработки персональных данных</a>"
+            )
         }
     }
 
