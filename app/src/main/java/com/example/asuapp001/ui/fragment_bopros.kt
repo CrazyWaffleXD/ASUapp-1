@@ -11,6 +11,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.asuapp001.R
 import com.example.asuapp001.utils.Question.ExpandableQuestion.Category
+import com.example.asuapp001.utils.Question.QuestionManager
+import com.example.asuapp001.utils.Question.WebLinkCard
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
@@ -87,6 +89,14 @@ class fragment_bopros : Fragment() {
                 it,
                 "Не приходит уведомление",
                 "Проверьте настройки уведомлений в приложении и на телефоне. Разрешите все типы уведомлений для этого приложения."
+            )
+        }
+
+        addSection("Полезные ссылки", Category.ALL) { container ->
+            addWebLinkCard(
+                container = container,
+                title = "Сайт АлтГУ",
+                url = "https://asu.ru"
             )
         }
 
@@ -214,6 +224,15 @@ class fragment_bopros : Fragment() {
         answer: String
     ) {
         com.example.asuapp001.utils.Question.ExpandableQuestion(container, question, answer).create()
+    }
+
+    private fun addWebLinkCard(
+        container: LinearLayout,
+        title: String,
+        url: String,
+        iconResId: Int? = null
+    ) {
+        WebLinkCard(container, title, url, iconResId).create()
     }
 
     private fun filterSections(category: Category) {
