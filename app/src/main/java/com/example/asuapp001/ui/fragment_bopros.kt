@@ -16,11 +16,16 @@ import com.example.asuapp001.utils.Question.WebLinkCard
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
 class fragment_bopros : Fragment() {
 
     private lateinit var sectionsContainer: LinearLayout
     private val sectionHeaders = mutableListOf<TextView>()
     private val sectionContainers = mutableListOf<LinearLayout>()
+    private val db = Firebase.firestore // или FirebaseFirestore.getInstance()
 
     private var currentCategory: Category = Category.ALL
 
@@ -34,14 +39,59 @@ class fragment_bopros : Fragment() {
         val chipGroup = view.findViewById<ChipGroup>(R.id.filterGroup)
         sectionsContainer = view.findViewById(R.id.sections_container)
 
-        createAllQuestions()
-
         setupChipClickListeners(chipGroup)
 
-        // Показываем все при старте
-        filterSections(currentCategory)
+        loadQuestionsFromFirebase() // Загружаем из Firebase
 
         return view
+    }
+    private fun loadQuestionsFromFirebase() {
+        db.collection("questions_data").document("sections")
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val sections = document.data?.entries
+                        ?.filter { it.key.startsWith("section_") }
+                        ?.sortedBy { it.key } // по порядку
+
+                    sections?.forEach { (_, sectionData) ->
+                        val title = sectionData["title"] as? String ?: return@forEach
+                        val categoryStr = sectionData["category"] as? String ?: "ALL"
+                        val category = Category.valueOf(categoryStr)
+
+                        val questions = sectionData["questions"] as? List<Map<String, String>> ?: emptyList()
+                        val links = sectionData["links"] as? List<Map<String, String>> ?: emptyList()
+
+                        addSection(title, category) { container ->
+                            // Добавляем вопросы
+                            questions.forEach { q ->
+                                addQuestion(
+                                    container,
+                                    q["question"] ?: "",
+                                    q["answer"] ?: ""
+                                )
+                            }
+
+                            // Добавляем ссылки
+                            links.forEach { link ->
+                                addWebLinkCard(
+                                    container = container,
+                                    title = link["title"] ?: "",
+                                    url = link["url"] ?: ""
+                                )
+                            }
+                        }
+                    }
+
+                    // Фильтруем после загрузки
+                    filterSections(currentCategory)
+                }
+            }
+            .addOnFailureListener { exception ->
+                // Обработка ошибки (нет сети, нет данных и т.п.)
+                // Можно показать toast или заглушку
+                android.widget.Toast.makeText(context, "Ошибка загрузки: ${exception.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun setupChipClickListeners(chipGroup: ChipGroup) {

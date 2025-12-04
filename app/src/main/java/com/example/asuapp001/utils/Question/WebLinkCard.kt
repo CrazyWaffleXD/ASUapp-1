@@ -36,11 +36,7 @@ class WebLinkCard(
             layoutParams = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
-            ).also { lp ->
-                lp.marginStart = context.dp(16f)
-                lp.marginEnd = context.dp(16f)
-                lp.bottomMargin = context.dp(8f)
-            }
+            )
         }
 
         val linearLayout = LinearLayout(context).apply {
