@@ -8,24 +8,27 @@ import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.asuapp001.R
 import com.example.asuapp001.utils.Question.ExpandableQuestion.Category
-import com.example.asuapp001.utils.Question.QuestionManager
 import com.example.asuapp001.utils.Question.WebLinkCard
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.GenericTypeIndicator
+import kotlin.collections.getValue
 
 class fragment_bopros : Fragment() {
 
     private lateinit var sectionsContainer: LinearLayout
     private val sectionHeaders = mutableListOf<TextView>()
     private val sectionContainers = mutableListOf<LinearLayout>()
-    private val db = Firebase.firestore // или FirebaseFirestore.getInstance()
+    private val db = FirebaseDatabase.getInstance("https://asuapp-978f2-default-rtdb.firebaseio.com/").reference
 
     private var currentCategory: Category = Category.ALL
 
@@ -41,57 +44,71 @@ class fragment_bopros : Fragment() {
 
         setupChipClickListeners(chipGroup)
 
+        db.child("test").setValue("Hello from ASU!")
+
         loadQuestionsFromFirebase() // Загружаем из Firebase
 
         return view
     }
     private fun loadQuestionsFromFirebase() {
-        db.collection("questions_data").document("sections")
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    val sections = document.data?.entries
-                        ?.filter { it.key.startsWith("section_") }
-                        ?.sortedBy { it.key } // по порядку
+        val sectionsRef = db.child("questions_data").child("sections")
 
-                    sections?.forEach { (_, sectionData) ->
-                        val title = sectionData["title"] as? String ?: return@forEach
-                        val categoryStr = sectionData["category"] as? String ?: "ALL"
-                        val category = Category.valueOf(categoryStr)
+        sectionsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val sectionsList = mutableListOf<Pair<String, Map<String, Any?>>>()
 
-                        val questions = sectionData["questions"] as? List<Map<String, String>> ?: emptyList()
-                        val links = sectionData["links"] as? List<Map<String, String>> ?: emptyList()
+                for (child in snapshot.children) {
+                    val key = child.key ?: continue
+                    if (!key.startsWith("section_")) continue
 
-                        addSection(title, category) { container ->
-                            // Добавляем вопросы
-                            questions.forEach { q ->
-                                addQuestion(
-                                    container,
-                                    q["question"] ?: "",
-                                    q["answer"] ?: ""
-                                )
-                            }
+                    val sectionData = child.getValue(object : GenericTypeIndicator<Map<String, Any?>>() {})
+                        ?: continue
 
-                            // Добавляем ссылки
-                            links.forEach { link ->
-                                addWebLinkCard(
-                                    container = container,
-                                    title = link["title"] ?: "",
-                                    url = link["url"] ?: ""
-                                )
-                            }
+                    sectionsList.add(key to sectionData)
+                }
+
+                val sortedSections = sectionsList.sortedBy { it.first }
+
+                sectionsContainer.removeAllViews()
+                sectionHeaders.clear()
+                sectionContainers.clear()
+
+                for ((_, sectionData) in sortedSections) {
+                    val title = sectionData["title"] as? String ?: "Без названия"
+                    val categoryStr = sectionData["category"] as? String ?: "ALL"
+                    val category = runCatching { Category.valueOf(categoryStr) }.getOrNull() ?: Category.ALL
+
+                    @Suppress("UNCHECKED_CAST")
+                    val questions = (sectionData["questions"] as? List<Map<String, String>>) ?: emptyList()
+
+                    @Suppress("UNCHECKED_CAST")
+                    val links = (sectionData["links"] as? List<Map<String, String>>) ?: emptyList()
+
+                    addSection(title, category) { container ->
+                        questions.forEach { q ->
+                            addQuestion(
+                                container,
+                                q["question"] ?: "",
+                                q["answer"] ?: ""
+                            )
+                        }
+                        links.forEach { link ->
+                            addWebLinkCard(
+                                container = container,
+                                title = link["title"] ?: "",
+                                url = link["url"] ?: ""
+                            )
                         }
                     }
-
-                    // Фильтруем после загрузки
-                    filterSections(currentCategory)
                 }
+
+                filterSections(currentCategory)
             }
-            .addOnFailureListener { exception ->
-                // Обработка ошибки (нет сети, нет данных и т.п.)
-                // Можно показать toast или заглушку
-                android.widget.Toast.makeText(context, "Ошибка загрузки: ${exception.message}", Toast.LENGTH_SHORT).show()
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context, "Ошибка загрузки: ${error.message}", Toast.LENGTH_SHORT).show()
             }
+        })
     }
 
     private fun setupChipClickListeners(chipGroup: ChipGroup) {
