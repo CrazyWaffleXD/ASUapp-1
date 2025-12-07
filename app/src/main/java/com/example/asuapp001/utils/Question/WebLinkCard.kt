@@ -25,7 +25,7 @@ class WebLinkCard(
             val padding = context.dp(16f)
             setContentPadding(padding, padding, padding, padding)
             radius = context.dp(8f).toFloat()
-            elevation = context.dp(2f).toFloat()
+            elevation = context.dp(4f).toFloat()
             setCardBackgroundColor(0xFFFFFFFF.toInt())
             setOnClickListener {
                 val intent = android.content.Intent(android.content.Intent.ACTION_VIEW).apply {
@@ -36,18 +36,14 @@ class WebLinkCard(
             layoutParams = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
-            )
+            ).also { lp ->
+                lp.bottomMargin = context.dp(8f)
+            }
         }
 
         val linearLayout = LinearLayout(context).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = android.view.Gravity.CENTER_VERTICAL
-            setPadding(
-                context.dp(16f),
-                context.dp(12f),
-                context.dp(16f),
-                context.dp(12f)
-            )
         }
 
         if (iconResId != null) {
@@ -68,7 +64,8 @@ class WebLinkCard(
         val textView = TextView(context).apply {
             text = title
             textSize = 16f
-            setTextColor(0xFF000000.toInt())
+            setTextColor(context.getColor(R.color.purple_700))
+            typeface = android.graphics.Typeface.DEFAULT_BOLD
             gravity = android.view.Gravity.CENTER_VERTICAL
             layoutParams = LinearLayout.LayoutParams(
                 0,
@@ -79,7 +76,7 @@ class WebLinkCard(
         linearLayout.addView(textView)
 
         val arrow = ImageView(context).apply {
-            setImageResource(R.drawable.ic_github)
+            setImageResource(R.drawable.ic_open_link)
             layoutParams = LinearLayout.LayoutParams(context.dp(24f), context.dp(24f))
             setColorFilter(0xFF666666.toInt())
         }

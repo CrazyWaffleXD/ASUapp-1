@@ -21,9 +21,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.GenericTypeIndicator
-import kotlin.collections.getValue
 
-class fragment_bopros : Fragment() {
+class FragmentQuestion : Fragment() {
 
     private lateinit var sectionsContainer: LinearLayout
     private val sectionHeaders = mutableListOf<TextView>()
@@ -140,124 +139,6 @@ class fragment_bopros : Fragment() {
         }
     }
 
-    private fun createAllQuestions() {
-        addSection("Помощь по приложению", Category.APP) {
-            addQuestion(
-                it,
-                "Методические рекомендации",
-                "В разработке..."
-            )
-            addQuestion(
-                it,
-                "Документация",
-                "В разработке..."
-            )
-            addQuestion(
-                it,
-                "Не приходит уведомление",
-                "Проверьте настройки уведомлений в приложении и на телефоне. Разрешите все типы уведомлений для этого приложения."
-            )
-        }
-
-        addSection("Полезные ссылки", Category.ALL) { container ->
-            addWebLinkCard(
-                container = container,
-                title = "Сайт АлтГУ",
-                url = "https://asu.ru"
-            )
-        }
-
-        addSection("Помощь по сайту", Category.SITE) {
-            addQuestion(
-                it,
-                "Подать заявление на поступление",
-                "Заявления можно подать в электронном виде <a href='https://pk.asu.ru'>на сайте АлтГУ</a>."
-            )
-            addQuestion(
-                it,
-                "Как зарегистрироваться?",
-                "Зарегистрироваться можно через личный кабинет студента на сайте <a href='https://lk.asu.ru'>ЛК АСУ</a>."
-            )
-            addQuestion(
-                it,
-                "Где найти список преподавателей?",
-                "На сайте в разделе <a href='https://www.asu.ru/sveden/employees/#lecturers'>Сведения об образовательной организации/Руководство и педагогический состав</a>."
-            )
-            addQuestion(
-                it,
-                "Как сменить пароль?",
-                "Смена пароля осуществляется в личном кабинете на сайте <a href='https://lk.asu.ru'>ЛК АСУ</a>."
-            )
-        }
-
-        addSection("Документы", Category.DOCUMENTS) {
-            addQuestion(
-                it,
-                "Какие документы нужны абитуриенту?",
-                "Паспорт, аттестат с приложением, СНИЛС, ИНН, фото 3×4, медицинская справка (по необходимости)."
-            )
-            addQuestion(
-                it,
-                "Можно ли заказать справку онлайн?",
-                "Да, <a href='https://www.asu.ru/univer_about/uslugi/stud_usl/'>на сайте в разделе Об органиации/МФЦ</a>."
-            )
-        }
-
-        addSection("Обратная связь", Category.APP) {
-            addQuestion(
-                it,
-                "Техническая поддержка",
-                "Пишите на email: <a href='mailto:support@asu.ru'>support@asu.ru</a>"
-            )
-            addQuestion(
-                it,
-                "Telegram-бот",
-                "Наш бот поможет: <a href='https://t.me/ASU_SupportBot'>@ASU_SupportBot</a>"
-            )
-        }
-
-        addSection("Образовательные ресурсы и сообщества АлтГУ", Category.SITE) {
-            addQuestion(
-                it,
-                "Официальный сайт",
-                "<a href='https://www.asu.ru'>www.asu.ru</a>")
-            addQuestion(
-                it,
-                "Личный кабинет",
-                "<a href='https://lk.asu.ru'>lk.asu.ru</a>")
-            addQuestion(
-                it,
-                "Telegram-бот",
-                "Наш бот поможет: <a href='https://t.me/ASU_SupportBot'>@ASU_SupportBot</a>"
-            )
-            addQuestion(
-                it,
-                "Сообщества",
-                "<a href=\"https://max.ru/id2225004738_biz\" target=\"_new\"> Max</a><br>" +
-                        "<a href=\"https://vk.com/public127455995\" target=\"_new\"> ВКонтакте</a><br>" +
-                        "<a href=\"https://ok.ru/group/64178468815086\" target=\"_new\"> Одноклассники</a><br>" +
-                        "<a href=\"https://youtube.com/c/AsuRuUniversity/\" target=\"_new\"> YouTube</a><br>" +
-                        "<a href=\"https://zen.yandex.ru/id/5e72e617b894223da526fae6\" target=\"_new\"> Яндекс Дзен</a><br>" +
-                        "<a href=\"https://rutube.ru/channel/23478960/\" target=\"_new\"> Rutube</a><br>" +
-                        "<a href=\"https://t.me/asuinfo\" target=\"_new\"> Telegram</a>"
-            )
-
-        }
-
-        addSection("О приложении", Category.ALL) {
-            addQuestion(
-                it,
-                "Версия приложения",
-                "v1.0.0 (2025)"
-            )
-            addQuestion(
-                it,
-                "Политика конфиденциальности",
-                "<a href='https://www.asu.ru/privacy'>Ознакомьтесь с политикой обработки персональных данных</a>"
-            )
-        }
-    }
-
     private fun addSection(
         title: String,
         category: Category,
@@ -352,7 +233,7 @@ class fragment_bopros : Fragment() {
 
         AnimatorSet().apply {
             playTogether(headerAnimator, containerAnimator)
-            duration = 300
+            duration = 200
             interpolator = DecelerateInterpolator()
             start()
         }
@@ -364,7 +245,7 @@ class fragment_bopros : Fragment() {
 
         AnimatorSet().apply {
             playTogether(headerAnimator, containerAnimator)
-            duration = 300
+            duration = 200
             interpolator = DecelerateInterpolator()
             start()
 

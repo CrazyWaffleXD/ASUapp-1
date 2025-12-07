@@ -34,6 +34,7 @@ class ExpandableQuestion(
             }
             radius = context.dp(8f).toFloat()
             cardElevation = context.dp(4f).toFloat()
+            setCardBackgroundColor(context.getColor(R.color.white))
         }
 
         val linearLayout = LinearLayout(context).apply {
@@ -58,7 +59,7 @@ class ExpandableQuestion(
         val question = TextView(context).apply {
             text = questionText
             textSize = 18f
-            setTextColor(0xFF1A4D99.toInt())
+            setTextColor(context.getColor(R.color.purple_700))
             typeface = android.graphics.Typeface.DEFAULT_BOLD
             layoutParams = LinearLayout.LayoutParams(
                 0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f
@@ -137,7 +138,7 @@ class ExpandableQuestion(
             answer.layoutParams.height = anim.animatedValue as Int
             answer.requestLayout()
         }
-        animator.duration = 300
+        animator.duration = 200
         animator.interpolator = DecelerateInterpolator()
         animator.start()
         arrow.animate().rotation(180f).setDuration(300).start()
@@ -150,7 +151,7 @@ class ExpandableQuestion(
             answer.layoutParams.height = anim.animatedValue as Int
             answer.requestLayout()
         }
-        animator.duration = 300
+        animator.duration = 200
         animator.interpolator = DecelerateInterpolator()
         animator.start()
 

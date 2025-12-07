@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/menu_bopros"
-        android:name="com.example.asuapp001.ui.fragment_bopros"
+        android:name="com.example.asuapp001.ui.FragmentQuestion"
         android:label="@string/menu_bopros"
         tools:layout="@layout/fragment_bopros" />
 
