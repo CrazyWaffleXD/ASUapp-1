@@ -14,19 +14,35 @@
         android:layout_height="wrap_content"
         android:padding="12dp">
 
+        <!-- Изображение сверху, растянуто на всю ширину -->
+        <ImageView
+            android:id="@+id/imageAd"
+            android:layout_width="380dp"
+            android:layout_height="152dp"
+            android:src="@null"
+            android:background="@drawable/shape"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="H,16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <!-- Заголовок под изображением -->
         <TextView
             android:id="@+id/textAdTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/fonts"
             android:text="Заголовок"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/imageAd"
+            app:layout_constraintTop_toBottomOf="@+id/imageAd"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- Описание под заголовком -->
         <TextView
             android:id="@+id/textAdDescription"
             android:layout_width="0dp"
@@ -35,30 +51,21 @@
             android:text="Описание"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/textAdTitle"
+            app:layout_constraintTop_toBottomOf="@+id/textAdTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textAdTitle" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageAd"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:scaleType="centerCrop"
-            android:background="@drawable/shape"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:src="@tools:sample/avatars" />
-
+        <!-- Группа тегов под описанием -->
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipGroupTags"
-            android:layout_width="263dp"
-            android:layout_height="37dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@+id/textAdDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:singleLine="true"
-            app:singleSelection="false"
-            tools:layout_editor_absoluteX="0dp" />
+            app:singleSelection="false" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

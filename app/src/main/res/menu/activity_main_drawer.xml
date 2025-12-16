@@ -9,38 +9,34 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_home" />
-
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/menu_gallery" />
         <item
             android:id="@+id/menu_dailyPlanner"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_daily_planner"
             android:title="@string/menu_dailyPlanner" />
         <item
             android:id="@+id/menu_ad"
-            android:icon="@drawable/baseline_assignment_late_24"
+            android:icon="@drawable/ic_menu_ad"
             app:actionViewClass="android.widget.TextView"
             android:title="@string/menu_ad" />
         <item
             android:id="@+id/menu_admin"
-            android:icon="@drawable/baseline_admin_panel_settings_24"
+            android:icon="@drawable/ic_menu_admin"
             android:title="@string/menu_admin" />
         <item
             android:id="@+id/menu_bopros"
-            android:icon="@drawable/baseline_search_24"
+            android:icon="@drawable/ic_menu_question"
             android:title="@string/menu_bopros" />
         <item
             android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_setting"
+            android:icon="@drawable/ic_menu_setting"
             android:title="@string/menu_setting"/>
         <item
             android:id="@+id/menu_creators"
-            android:icon="@drawable/baseline_assist_walker_24"
+            android:icon="@drawable/ic_menu_developer_default"
             android:title="@string/menu_creators" />
-
-
-
     </group>
 </menu>
