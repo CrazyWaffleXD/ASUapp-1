@@ -4,74 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.GalleryFragment"
-    android:background="@drawable/fon">
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="290dp"
-        android:layout_height="184dp"
-        android:layout_marginStart="-35dp"
-        android:layout_marginTop="-30dp"
-        android:src="@drawable/logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="РАСПИСАНИЕ"
-        android:textColor="@color/purple_700"
-        android:textSize="36sp"
-        android:textStyle="bold"
+    android:background="@drawable/fon"
+    tools:context=".ui.gallery.GalleryFragment">
+
+
+    <!-- WebView для отображения веб-страницы -->
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="413dp"
+        android:layout_height="916dp"
+        android:layout_margin="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-
+    <!-- Опционально: можно оставить кнопки или убрать -->
+    <!-- Убираем кнопки или оставляем — по желанию -->
+    <!--
     <Button
         android:id="@+id/studentButton"
         android:layout_width="249dp"
         android:layout_height="62dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/purple_700"
         android:text="Я - СТУДЕНТ"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
-
-    <Button
-        android:id="@+id/teacherButton"
-        android:layout_width="246dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="@color/purple_700"
-        android:text="Я - ПРЕПОДАВАТЕЛЬ"
-        android:textColor="@android:color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentButton"
-        tools:ignore="MissingConstraints,NotSibling" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="370dp"
-        android:layout_height="740dp"
-        android:src="@drawable/garlands"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="174dp"
-        android:layout_height="94dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/l2025"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
