@@ -22,6 +22,13 @@ class ExpandableQuestion(
         ALL, APP, SITE, DOCUMENTS
     }
 
+    private fun dp(context: Context, value: Float): Int =
+        TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            value,
+            context.resources.displayMetrics
+        ).toInt()
+
     fun create(): View {
         val context = container.context
 
