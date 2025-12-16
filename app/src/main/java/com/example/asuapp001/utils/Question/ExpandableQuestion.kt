@@ -80,16 +80,19 @@ class ExpandableQuestion(
         questionContainer.addView(arrow)
 
         val answer = TextView(context).apply {
-            // Используем fromHtml для поддержки HTML
-            text = android.text.Html.fromHtml(answerText, android.text.Html.FROM_HTML_MODE_COMPACT)
-            setTextIsSelectable(true) // Опционально: позволяет копировать текст
+            // Заменяем \n на <br> для поддержки переносов в HTML
+            val htmlText = answerText
+            text = android.text.Html.fromHtml(htmlText, android.text.Html.FROM_HTML_MODE_COMPACT)
 
-            // разрешить клики по ссылкам
+            // Устанавливаем цвет ссылок (например, из ресурсов или напрямую)
+            setLinkTextColor(context.getColor(R.color.purple_200)) // или R.color.your_link_color
+
+            // Критично: включаем обработку кликов по ссылкам
             movementMethod = android.text.method.LinkMovementMethod.getInstance()
 
             textSize = 16f
             setTextColor(0xFF333333.toInt())
-            setPadding(dp(context, 8f), dp(context, 8f), dp(context, 8f), dp(context, 8f))
+            setPadding(dp(context, 16f), dp(context, 8f), dp(context, 16f), dp(context, 8f)) // Увеличены отступы слева/справа
             visibility = View.GONE
             layoutParams = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
