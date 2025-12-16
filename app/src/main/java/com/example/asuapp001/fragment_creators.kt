@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.asuapp001.R
 import com.example.asuapp001.databinding.FragmentFragmentCreatorsBinding
 import com.example.asuapp001.data.Developer // Используем общий класс
 import com.example.asuapp001.ui.adapters.DeveloperAdapter
@@ -32,8 +31,8 @@ class fragment_creators : Fragment() {
                 name = "Земцов Алексей Владимирович",
                 role = "Руководитель проекта",
                 group = "Преподаватель СПО",
-                descriptionText = "Наш слон",
-                avatarResId = R.drawable.ic_avatar_default,
+                descriptionText = "",
+                avatarResId = R.drawable.ic_menu_developer_default,
                 githubUrl = "https://github.com/alexey",
                 email = "alexey@asu.ru"
             ),
@@ -41,8 +40,8 @@ class fragment_creators : Fragment() {
                 name = "Затеев Николай Максимович",
                 role = "Разработчик, дизайнер",
                 group = "305с9-1",
-                descriptionText = "Описания нет",
-                avatarResId = R.drawable.ic_avatar_default,
+                descriptionText = "",
+                avatarResId = R.drawable.ic_menu_developer_default,
                 githubUrl = "",
                 email = "nikolay.zateev@yandex.ru"
             ),
@@ -51,7 +50,7 @@ class fragment_creators : Fragment() {
                 role = "Лидер проекта, разработчик",
                 group = "305с9-1",
                 descriptionText = "",
-                avatarResId = R.drawable.ic_avatar_default,
+                avatarResId = R.drawable.ic_menu_developer_default,
                 githubUrl = "",
                 email = "sasha.pannin@yandex.ru"
             ),
@@ -59,8 +58,8 @@ class fragment_creators : Fragment() {
                 name = "Швецов Аркадий Александрович",
                 role = "Разработчик, тестировщик",
                 group = "305с9-2",
-                descriptionText = "Описания нет",
-                avatarResId = R.drawable.ic_avatar_default,
+                descriptionText = "",
+                avatarResId = R.drawable.ic_menu_developer_default,
                 githubUrl = "",
                 email = "arkadiy.shevtsow@yandex.ru"
             ),
@@ -68,8 +67,8 @@ class fragment_creators : Fragment() {
                 name = "Хуторной Михаил Николаевич",
                 role = "Разработчик",
                 group = "305с9-1",
-                descriptionText = "Описания нет",
-                avatarResId = R.drawable.ic_avatar_default,
+                descriptionText = "",
+                avatarResId = R.drawable.ic_menu_developer_default,
                 githubUrl = "",
                 email = "mikhail.khutornoy@yandex.ru"
             ),
@@ -77,8 +76,8 @@ class fragment_creators : Fragment() {
                 name = "Черданцев Иван",
                 role = "Разработчик",
                 group = "305с9-1",
-                descriptionText = "Описания нет",
-                avatarResId = R.drawable.ic_avatar_default,
+                descriptionText = "",
+                avatarResId = R.drawable.ic_menu_developer_default,
                 githubUrl = "",
                 email = "ivan.cherdantsev@yandex.ru"
             ),
@@ -86,8 +85,8 @@ class fragment_creators : Fragment() {
                 name = "Шабанов Никита",
                 role = "Разработчик, дизайнер",
                 group = "405с11-с",
-                descriptionText = "Описания нет",
-                avatarResId = R.drawable.ic_avatar_default,
+                descriptionText = "",
+                avatarResId = R.drawable.ic_menu_developer_default,
                 githubUrl = "",
                 email = "nikita.shabanov@yandex.ru"
             )

@@ -67,29 +67,40 @@ class AdFragment : Fragment() {
         val database = Firebase.database
         val adsRef = database.getReference("ads")
 
-        adsRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val adsList = mutableListOf<Ad>()
+    adsRef.addValueEventListener(object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            val adsList = mutableListOf<Ad>()
 
-                for (adSnapshot in snapshot.children) {
-                    val title = adSnapshot.child("title").value as? String ?: "Без названия"
-                    val description = adSnapshot.child("description").value as? String ?: "Нет описания"
-                    val imageUrl = adSnapshot.child("imageUrl").value as? String ?: ""
+            for (adSnapshot in snapshot.children) {
+                val title = adSnapshot.child("title").value as? String ?: "Без названия"
+                val description = adSnapshot.child("description").value as? String ?: "Нет описания"
+                val imageUrl = adSnapshot.child("imageUrl").value as? String ?: ""
 
-                    val imageRes = when (imageUrl.lowercase()) {
-                        "l2025" -> R.drawable.l2025
-                        "santa_hat" -> R.drawable.santa_hat
-                        else -> R.drawable.logo
+                // 🔥 Добавим лог, чтобы видеть, что пришло
+                println("DEBUG: imageUrl from Firebase = '$imageUrl'")
+
+                val resources = context?.resources
+                val packageName = context?.packageName
+                val imageRes = when (val name = imageUrl.lowercase().trim()) {
+                    "l2025" -> R.drawable.l2025
+                    "santa_hat" -> R.drawable.santa_hat
+                    else -> {
+                        // Пытаемся найти ресурс по имени
+                        val id = resources?.getIdentifier(name, "drawable", packageName)
+                        if (id != null && id != 0) id else R.drawable.logo
                     }
+                }
 
-                    // Читаем теги как список строк
-                    val tagsSnapshot = adSnapshot.child("tags")
-                    val tags = mutableListOf<String>()
-                    if (tagsSnapshot.exists() && tagsSnapshot.childrenCount > 0) {
-                        for (tag in tagsSnapshot.children) {
-                            tag.value?.toString()?.let { tags.add(it) }
-                        }
+                // 🔥 Проверим, что imageRes — валидный ID
+                println("DEBUG: imageRes ID = $imageRes")
+
+                val tagsSnapshot = adSnapshot.child("tags")
+                val tags = mutableListOf<String>()
+                if (tagsSnapshot.exists() && tagsSnapshot.childrenCount > 0) {
+                    for (tag in tagsSnapshot.children) {
+                        tag.value?.toString()?.let { tags.add(it) }
                     }
+                }
 
                     adsList.add(Ad(title, description, imageRes, tags))
                 }
@@ -100,7 +111,7 @@ class AdFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Обработка ошибки
+                println("Ошибка Firebase: $error")
             }
         })
     }
