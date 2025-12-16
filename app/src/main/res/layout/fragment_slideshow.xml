@@ -4,229 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fon"
-    tools:context=".ui.diaryPrilagusha.diaryPrilagushaFragment">
+    android:background="@drawable/fon">
 
-
-    <EditText
-        android:id="@+id/editTextMonday"
-        android:layout_width="145dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="148dp"
-        android:background="@drawable/shape"
-        android:ems="10"
-        android:fontFamily="@font/fonts"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:lines="11"
-        android:maxLength="1000"
-        android:paddingLeft="10dp"
-        android:paddingTop="30dp"
-        android:paddingEnd="10dp"
-        android:paddingRight="10dp"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextTuesday"
-        android:fontFamily="@font/fonts"
-        android:layout_width="145dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/shape"
-        android:ems="10"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:lines="11"
-        android:textSize="15dp"
-        android:maxLength="1000"
-        android:paddingTop="30dp"
-        android:paddingEnd="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMonday" />
-
-    <EditText
-        android:id="@+id/editTextWednesday"
-        android:fontFamily="@font/fonts"
-        android:layout_width="145dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/shape"
-        android:ems="10"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:lines="11"
-        android:textSize="15dp"
-        android:maxLength="1000"
-        android:paddingTop="30dp"
-        android:paddingEnd="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTuesday" />
-
-    <EditText
-        android:id="@+id/editTextThursday"
-        android:layout_width="145dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="148dp"
-        android:layout_marginEnd="28dp"
-        android:background="@drawable/shape"
-        android:ems="10"
-        android:fontFamily="@font/fonts"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:lines="11"
-        android:maxLength="1000"
-        android:paddingLeft="10dp"
-        android:paddingTop="30dp"
-        android:paddingEnd="10dp"
-        android:paddingRight="10dp"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextFriday"
-        android:fontFamily="@font/fonts"
-        android:layout_width="145dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/shape"
-        android:ems="10"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:lines="11"
-        android:textSize="15dp"
-        android:maxLength="1000"
-        android:paddingTop="30dp"
-        android:paddingEnd="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextThursday" />
-
-    <EditText
-        android:id="@+id/editTextSaturday"
-        android:fontFamily="@font/fonts"
-        android:layout_width="145dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/shape"
-        android:ems="10"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:lines="11"
-        android:textSize="15dp"
-        android:maxLength="1000"
-        android:paddingTop="30dp"
-        android:paddingEnd="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFriday" />
-
-    <TextView
-        android:id="@+id/Monday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="124dp"
-        android:fontFamily="@font/fonts"
-        android:text="Понедельник"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextMonday"
-        app:layout_constraintStart_toStartOf="@+id/editTextMonday" />
-
-    <TextView
-        android:id="@+id/Tuesday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginBottom="124dp"
-        android:fontFamily="@font/fonts"
-        android:text="Вторник"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextTuesday"
-        app:layout_constraintStart_toStartOf="@+id/editTextTuesday" />
-
-    <TextView
-        android:id="@+id/Wednesday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="124dp"
-        android:fontFamily="@font/fonts"
-        android:text="Среда"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextWednesday"
-        app:layout_constraintStart_toStartOf="@+id/editTextWednesday" />
-
-    <TextView
-        android:id="@+id/Thursday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="124dp"
-        android:fontFamily="@font/fonts"
-        android:text="Четверг"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextThursday"
-        app:layout_constraintEnd_toEndOf="@+id/editTextThursday" />
-
-    <TextView
-        android:id="@+id/Friday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="124dp"
-        android:fontFamily="@font/fonts"
-        android:text="Пятница"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextFriday"
-        app:layout_constraintEnd_toEndOf="@+id/editTextFriday" />
-
-    <TextView
-        android:id="@+id/Saturday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="124dp"
-        android:fontFamily="@font/fonts"
-        android:text="Суббота"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextSaturday"
-        app:layout_constraintEnd_toEndOf="@+id/editTextSaturday" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="304dp"
-        android:layout_height="54dp"
-        android:fontFamily="@font/fonts"
-        android:text="ЕЖЕДНЕВНИК"
-        android:textColor="#1a4d99"
-        android:textSize="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.124" />
-
+    <!-- Декорации -->
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="290dp"
@@ -237,34 +17,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="65dp"
-        android:layout_height="67dp"
-        android:rotation="45"
-        android:src="@drawable/santa_hat"
-        android:layout_marginStart="-40dp"
-        android:layout_marginBottom="-30dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextMonday"
-        app:layout_constraintStart_toEndOf="@+id/editTextMonday"  />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewNotes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/fabAddNote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.64" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="139dp"
-        android:layout_height="112dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="40dp"
-        android:src="@drawable/l2025"
-        app:layout_constraintBottom_toTopOf="@+id/editTextThursday"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:src="@android:drawable/ic_input_add"
+        app:tint="@android:color/white"
+        app:backgroundTint="#1a4d99"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="370dp"
-        android:layout_height="740dp"
-        android:src="@drawable/garlands"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
